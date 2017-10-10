@@ -1,0 +1,202 @@
+/*! Flexboxgrid (Customized)
+------------------------- */
+/// Based on http://flexboxgrid.com/
+///
+/// Naming scheme changed: from .col-xs-1 to .l-col--xs-1
+///
+/// Addition:
+/// - Responsive container: .l-container--{bp}
+/// - Responsive row direction: .l-row--{bp}-row-reverse|column-reverse
+/// - Responsive row stretch: .l-row--{bp}-stretch
+/// - Responsive column collapsed: .l-col--{bp}-0
+/// - Responsive column ordered: .l-col--{bp}-ordered
+/// - Responsive column visibility: .l-col--{bp}-hidden|visible
+// Config
+// -------------------------
+$row-division: 12;
+$row-gutter: 2.5rem;
+$row-half-gutter: $row-gutter / 2;
+$row-outer-margin: $row-gutter / 2;
+// Breakpoints (Mobile first)
+$grid-breakpoints: (
+    // (xs : Extra small devices (phones): 0 and up)
+    sm: 769px, // Small devices (tablets): 769px and up
+    md: 1008px, // Medium devices (desktops): 1008px and up
+    lg: 1200px, // Large devices (large desktops): 1200px and up
+    xl: 1392px, // Extra large devices (extra large desktops): 1392px and up
+);
+// Container
+// -------------------------
+.l-container {
+    box-sizing: border-box;
+    width: 100%;
+    // max-width: 1440px; // remove for 5% gutter 
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%; // new
+    padding-right: 5%; // new
+    position: relative;
+
+    //useful for content areas where we will be rendering block grid classes dynamically
+    .l-content-container > & { 
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+/// Container modifiers
+/// @example: .l-container--sm
+@mixin container-modifiers($bp-name, $bp-size) {
+    .l-container--#{$bp-name} {
+        max-width: #{$bp-size};
+    }
+}
+
+@mixin clearfix {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+}
+// Row
+// -------------------------
+.l-row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: - $row-half-gutter;
+    margin-left: - $row-half-gutter;
+    @include clearfix;
+
+    // added to allow flex start middle end
+    &--full-height {
+        height: 100%; 
+    }
+}
+/// Row modifiers
+/// @example: .l-row--xs-row
+@mixin row-modifiers($bp-name) {
+    // Direction
+    .l-row--#{$bp-name}-row {
+        flex-direction: row;
+    }
+    .l-row--#{$bp-name}-row-reverse {
+        flex-direction: row-reverse;
+    }
+    .l-row--#{$bp-name}-column {
+        flex-direction: column;
+    }
+    .l-row--#{$bp-name}-column-reverse {
+        flex-direction: column-reverse;
+    }
+    // Justification
+    .l-row--#{$bp-name}-start {
+        justify-content: flex-start;
+    }
+    .l-row--#{$bp-name}-center {
+        justify-content: center;
+    }
+    .l-row--#{$bp-name}-end {
+        justify-content: flex-end;
+    }
+    .l-row--#{$bp-name}-around {
+        justify-content: space-around;
+    }
+    .l-row--#{$bp-name}-between {
+        justify-content: space-between;
+    }
+    // Alignment
+    .l-row--#{$bp-name}-top {
+        align-items: flex-start;
+    }
+    .l-row--#{$bp-name}-middle {
+        align-items: center;
+    }
+    .l-row--#{$bp-name}-bottom {
+        align-items: flex-end;
+    }
+    .l-row--#{$bp-name}-stretch {
+        align-items: stretch;
+    }
+}
+// Column
+// -------------------------
+[class*="l-col--"] {
+    box-sizing: border-box;
+    flex: 0 1 auto;
+    padding-right: $row-half-gutter;
+    padding-left: $row-half-gutter;
+}
+/// Column modifiers
+/// @example: .col--xs
+@mixin col-modifiers($bp-name) {
+    // Size
+    .l-col--#{$bp-name} {
+        flex-grow: 1;
+        flex-basis: auto;
+        max-width: none;
+    }
+    .l-col--#{$bp-name}-0 {
+        flex-grow: 0;
+        flex-basis: auto;
+        max-width: none;
+    }
+    @for $i from 1 through $row-division {
+        .l-col--#{$bp-name}-#{$i} {
+            flex-basis: percentage($i / $row-division);
+            max-width: percentage($i / $row-division);
+        }
+        .l-col--#{$bp-name}-push-#{$i} {
+            margin-left: percentage($i / $row-division);
+        }
+        .l-col--#{$bp-name}-pull-#{$i} {
+            margin-left: percentage(-$i / $row-division);
+        }
+    }
+    // Order
+    .l-col--#{$bp-name}-first {
+        order: -1;
+    }
+    .l-col--#{$bp-name}-ordered {
+        order: 0;
+    }
+    .l-col--#{$bp-name}-last {
+        order: 1;
+    }
+    // Visibility
+    .l-col--#{$bp-name}-hidden {
+        display: none;
+    }
+    .l-col--#{$bp-name}-visible {
+        display: block;
+        display: initial;
+    }
+    // align items
+    .l-col--#{$bp-name}-top {
+        display: flex;
+        align-items: flex-start;
+    }
+    .l-col--#{$bp-name}-middle {
+        display: flex;
+        align-items: center;
+    }
+    .l-col--#{$bp-name}-bottom {
+        display: flex;
+        align-items: flex-end;
+    }
+}
+// Responsive modifiers generation
+// -------------------------
+// Row and Column first modifiers
+@include row-modifiers("xs");
+@include col-modifiers("xs");
+// Row and Column responsive modifiers
+@each $bp-name, $bp-size in $grid-breakpoints {
+    @media (min-width: $bp-size) {
+        @include container-modifiers($bp-name, $bp-size);
+        @include row-modifiers($bp-name);
+        @include col-modifiers($bp-name);
+    }
+}

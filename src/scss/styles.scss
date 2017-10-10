@@ -1,0 +1,44 @@
+@import "flex-grid";
+
+body {
+	font-family: Arial;
+	font-weight: bold;
+}
+
+.block {
+	background-color: #610430;
+	height: auto;
+	position: relative;
+
+	&--inner {
+		background-color: #972b62;
+		height: 100px;
+
+		&::before {
+			content: '';
+			background-color: white;
+			border-radius: 50%;
+			display: inline-block;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 45px;
+			height: 45px;
+			transform: translate(-50%, -50%);
+		}
+
+		&::after {
+			counter-increment: row;
+			content: counter(row);
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+.row-vsb {
+	counter-reset: row;
+	margin-bottom: 30px;
+}
