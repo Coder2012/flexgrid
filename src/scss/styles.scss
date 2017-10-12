@@ -1,17 +1,26 @@
+@import "buttons";
 @import "flex-grid";
+@import "typography-demo";
 
 body {
-	font-family: Arial;
-	font-weight: bold;
+	font-family: 'Courier New';
+	font-size: 14px;
+	line-height: 22px;
+}
+
+ul,
+ol {
+	list-style-type: none;
+	padding-left: 0; 
 }
 
 .block {
-	background-color: #610430;
+	background-color: #FDE8EF;
 	height: auto;
 	position: relative;
 
 	&--inner {
-		background-color: #972b62;
+		background-color: #FEDEE9;
 		height: 100px;
 
 		&::before {
@@ -41,4 +50,54 @@ body {
 .row-vsb {
 	counter-reset: row;
 	margin-bottom: 30px;
+}
+
+@keyframes fader {
+	0% 	 { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+.grid,
+.typography {
+	animation: fader 1s normal;
+}
+
+[data-menu-item] {
+	&.active {
+		text-decoration: none;
+	}
+}
+
+.menu {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 65px;
+
+	&__link {
+		color: #8E8E8E;
+	    flex-grow: 1;
+		margin:0 36px 38px 0;
+		text-decoration: none;
+	    width: calc(100% * (1/4) - 36px);
+
+	    &:nth-child(4n) {
+	    	margin-right: 0;
+	    }
+
+	    &::after {
+	    	content: '';
+	    	display: inline-block;
+	    	width: 100%;
+	    	height: 1px;
+	    	background-color: #eee;
+	    }
+	}
+}
+
+.router-link-active {
+	color: #000;
+
+	&::after {
+		background-color: #000;
+	}
 }

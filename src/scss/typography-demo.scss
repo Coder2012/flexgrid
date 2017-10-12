@@ -1,0 +1,414 @@
+// default variables
+$s-base-font-size: 16px;
+$s-base-color: #292929;
+$s-pms-2395: #bd2585;
+
+@font-face {
+	font-family: 'berlingske_serifextrabold';
+	src: url("../fonts/berlingskeserif-xbd-webfont.woff2") format("woff2"), url("../fonts/berlingskeserif-xbd-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'berlingske_serif_stencidemiBd';
+  src: url("../fonts/berlingskeserifstencil-dbd-webfont.woff2") format("woff2"), url("../fonts/berlingskeserifstencil-dbd-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'urw_geometricmedium';
+  src: url("../fonts/urw_-_urwgeometric-medium-webfont.woff2") format("woff2"), url("../fonts/urw_-_urwgeometric-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'urw_geometricmedium_oblique';
+  src: url("../fonts/urw_-_urwgeometric-mediumoblique-webfont.woff2") format("woff2"), url("../fonts/urw_-_urwgeometric-mediumoblique-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'urw_geometricregular';
+  src: url("../fonts/urw_-_urwgeometric-regular-webfont.woff2") format("woff2"), url("../fonts/urw_-_urwgeometric-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'urw_geometricregular_oblique';
+  src: url("../fonts/urw_-_urwgeometric-regularoblique-webfont.woff2") format("woff2"), url("../fonts/urw_-_urwgeometric-regularoblique-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'urw_geometricsemi_bold';
+  src: url("../fonts/urw_-_urwgeometric-semibold-webfont.woff2") format("woff2"), url("../fonts/urw_-_urwgeometric-semibold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'urw_geometricSBdOb';
+  src: url("../fonts/urw_-_urwgeometric-semiboldoblique-webfont.woff2") format("woff2"), url("../fonts/urw_-_urwgeometric-semiboldoblique-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$s-breakpoints: (
+  mobile: 0px,
+  tablet: 769px,
+  desktop: 1008px,
+  widescreen: 1200px,
+  fullhd: 1392px
+);
+
+$s-type-sizing: (
+  bumblebee: (
+    mobile: (
+      font-size: 13px,
+      line-height: 24px
+    )
+  ),
+  ratchet: (
+    mobile: (
+      font-size: 14px,
+      line-height: 24px
+    ) 
+  ),
+  jazz: (
+    mobile: (
+      font-size: 16px,
+      line-height: 28px
+    )
+  ),
+  blaster: (
+    mobile: (
+      font-size: 19px,
+      line-height: 32px
+    )
+  ),
+  kup: (
+    mobile: (
+      font-size: 19px,
+      line-height: 24px
+    ),
+    tablet: (
+      font-size: 23px,
+      line-height: 28px
+    ),
+    desktop: (
+      font-size: 25px,
+      line-height: 32px
+    )
+  ),
+  ironhide: (
+    mobile: (
+      font-size: 23px,
+      line-height: 28px
+    ),
+    tablet: (
+      font-size: 28px,
+      line-height: 32px
+    ),
+    desktop: (
+      font-size: 31px,
+      line-height: 36px
+    )
+  ),
+  grimlock: (
+    mobile: (
+      font-size: 28px,
+      line-height: 32px
+    ),
+    tablet: (
+      font-size: 33px,
+      line-height: 40px
+    ),
+    desktop: (
+      font-size: 39px,
+      line-height: 48px
+    )
+  ),
+  sideswipe: (
+    mobile: (
+      font-size: 48px,
+      line-height: 56px
+    ),
+    tablet: (
+      font-size: 57px,
+      line-height: 68px
+    ),
+    desktop: (
+      font-size: 76px,
+      line-height: 88px
+    )
+  )
+);
+
+@function t-slice($list, $start: 1, $end: length($list)) {
+  $result: ();
+
+  @if $start > $end or $start < 1 or $end < 1 or $start > length($list) or $end > length($list)  {
+    @return $result;
+  } @else {
+    @for $i from $start through $end {
+      $result: append($result, nth($list, $i));
+    }
+  }
+
+  @return $result;
+}
+
+@function t-rem($values) {
+
+  @if type-of($values) == 'list' {
+    $rems: ();
+
+    @each $value in $values {
+      $rems: append($rems, t-rem($value));
+    }
+    @return $rems;
+  }
+
+  @if type-of($values) == 'number' {
+    @if $values == 0 {
+      @return $values;
+    }
+    @else if unit($values) == px {
+      @return ($values / $s-base-font-size) * 1rem;
+    }
+  }
+
+  @return $values;
+}
+
+@function t-map-value($map-value, $keys, $prev-key: null) {
+  //@debug "t-map-value: #{$map-value} keys: #{$keys} prev-next: #{$prev-key}";
+  @if (type-of($map-value) != map or length($keys) == 0) {
+    @if($map-value == null) {
+      @error '"#{$prev-key}" not found in map-value keys.';
+    }
+    @return $map-value;
+  }
+
+  $curr-key: nth($keys, 1);
+  @return t-map-value(map-get($map-value, $curr-key), t-slice($keys, 2), $curr-key);
+}
+
+@mixin t-respond-to-min($width) {
+  @media only screen and (min-width: $width)  { @content; }
+}
+
+@mixin t-type-size($type-size, $breakpoint-name) {
+
+  font-size: t-rem(t-map-value($s-type-sizing, ($type-size, $breakpoint-name, font-size)));
+  line-height: t-rem(t-map-value($s-type-sizing, ($type-size, $breakpoint-name, line-height)));
+}
+
+@mixin t-responsive-type-size($type-size, $default-breakpoint-name: mobile) {
+  @include t-type-size($type-size, $default-breakpoint-name);
+  @each $breakpoint-name in map-keys(map-get($s-type-sizing, $type-size)) {
+    @if $breakpoint-name != $default-breakpoint-name and breakpoint($breakpoint-name) != null {
+      @include t-respond-to-min(t-map-value($s-breakpoints, ($breakpoint-name, size))) {
+        @include t-type-size($type-size, $breakpoint-name);
+      }
+    }
+  }
+}
+
+body {
+  color: $s-base-color;
+}
+
+.main {
+  max-width: t-rem(1280px);
+  margin: auto;
+  padding-top: 80px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.logo {
+  width: t-rem(100px);
+}
+
+.url{
+  font-size: 12px;
+  font-family: 'Courier'
+}
+
+.breakpoint:after {
+  content: 'No media query';
+  @each $breakpoint in $s-breakpoints {
+    @media (min-width: nth(($breakpoint), 2)) {
+      content: '#{nth($breakpoint,1)}';
+    }
+  }
+  color: $s-pms-2395;
+  display: inline-block;
+}
+.text-size:after {
+  content: 'size';
+  
+}
+.heading {
+  position: relative;
+  
+  &--xxl {
+    @include t-responsive-type-size(sideswipe);
+    font-family: 'berlingske_serif_stencidemiBd', Arial, sans-serif;
+  }
+  &--xl {
+    @include t-responsive-type-size(grimlock);
+    font-family: 'berlingske_serif_stencidemiBd', Arial, sans-serif;
+  }
+  &--l {
+    @include t-responsive-type-size(ironhide);
+    font-family: 'berlingske_serifextrabold', Arial, sans-serif;
+  }
+  &--m {
+    @include t-responsive-type-size(kup);
+    font-family: 'berlingske_serifextrabold', Arial, sans-serif;
+  }
+}
+
+.annotation {
+  color: $s-pms-2395;
+  font-family: 'Courier new';
+  font-size: 10px;
+  display: inline-block;
+  line-height: 1em;
+  margin: 0;
+  position: absolute;
+  top: -10px;
+}
+
+.para {
+  position: relative;
+  font-family: 'urw_geometricregular', Arial, sans-serif;
+  &--l {
+    @include t-responsive-type-size(blaster);  
+  }
+  &--s {
+    @include t-responsive-type-size(ratchet);  
+  }
+}
+
+.navigation {
+  position: relative;
+  font-weight: bold;
+  &__items {
+    @include t-responsive-type-size(ratchet);
+    display: flex;
+    font-family: 'urw_geometricregular', Arial, sans-serif;
+    list-style-type: none;
+    padding-left: 0;
+    text-transform: uppercase;
+  }
+ 
+  &__item {
+    $size: 3px;
+    
+    position: relative;
+    
+    &:not(:first-child):not(:last-child) {
+      margin: 0 20px 5px;
+    }
+    
+    &:nth-child(-n+4)::after {
+      content: '';
+      border-bottom: 1px solid grey;
+      border-right: 1px solid grey;
+      display: block;
+      position: absolute;
+      left: 50%;
+      width: $size;
+      height: $size;
+      transform: translate(-50%, 0) rotate(45deg);
+    }
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  &__title {
+    font-family: 'urw_geometricregular', Arial, sans-serif;
+    position: relative;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+
+    &::after {
+      content: '';
+      display: block;
+      background: black;
+      margin-left: 10px;
+      height: 1px;
+      width: 30px;
+    }
+  }
+  &__items {
+    @include t-responsive-type-size(ratchet);
+    display: flex;
+    font-family: 'urw_geometricregular', Arial, sans-serif;
+    list-style-type: none;
+    padding-left: 0;
+  }
+  &__item {
+    display:flex;
+    margin: 0 10px;
+    position: relative;
+    
+    &:not(:last-child)::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 10px;
+      background: black;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(8px, -50%) rotate(25deg); 
+    }
+  }
+}
+
+.v-spacing {
+  margin-bottom: 100px;
+}
+
+.brands-menu {
+  margin-bottom: 60px;
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    margin: 8px 0;
+
+    a.active {
+      text-decoration: none;
+    }
+  }
+
+  // mobile hardcoded here I know!
+  @include t-respond-to-min(769px) {
+    &__items {
+      flex-direction: row;
+    }
+
+    &__item {
+      margin: 0;
+      
+      &:not(:first-child):not(:last-child) {
+         margin: 0 12px;
+      }
+    }
+  }
+}
