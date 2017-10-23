@@ -1,6 +1,7 @@
 @import "flex-grid";
 @import "slick";
 @import "typography-demo";
+@import "masthead";
 @import "buttons";
 @import "product";
 
@@ -8,6 +9,7 @@ body {
 	font-family: 'Courier New';
 	font-size: 14px;
 	line-height: 22px;
+	margin: 0;
 }
 
 ul,
@@ -49,6 +51,10 @@ ol {
 		}
 	}
 
+}
+
+#app {
+	margin-top: 60px;
 }
 
 .row-vsb {

@@ -1,0 +1,13 @@
+.masthead {
+	background-color: #FEDEE9;
+	position: fixed;
+	min-width: 100%;
+	top: 0;
+	z-index: 1;
+
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 15px;
+	}
+}

@@ -9,6 +9,7 @@ import Forms from './components/forms';
 import Tables from './components/tables';
 import Errors from './components/errors';
 import Images from './components/images';
+import Masthead from './components/masthead';
 
 Vue.use(VueRouter);
 
@@ -30,5 +31,6 @@ const router = new VueRouter({
 });
 
 const app = new Vue({
-	router
+	router,
+	components: { Masthead }
 }).$mount('#app');
