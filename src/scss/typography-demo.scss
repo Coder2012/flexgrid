@@ -1,7 +1,8 @@
 // default variables
 $s-base-font-size: 16px;
-$s-base-color: #292929;
-$s-pms-2395: #bd2585;
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
 
 @font-face {
 	font-family: 'berlingske_serifextrabold';
@@ -68,6 +69,12 @@ $s-breakpoints: (
 );
 
 $s-type-sizing: (
+  mainframe: (
+    mobile: (
+      font-size: 12px,
+      line-height: 24px
+    )
+  ),
   bumblebee: (
     mobile: (
       font-size: 13px,
@@ -221,10 +228,6 @@ $s-type-sizing: (
   }
 }
 
-body {
-  color: $s-base-color;
-}
-
 .main {
   max-width: t-rem(1280px);
   margin: auto;
@@ -233,32 +236,26 @@ body {
   padding-right: 5%;
 }
 
-.logo {
-  width: t-rem(100px);
-}
-
 .url{
   font-size: 12px;
   font-family: 'Courier'
 }
 
-.breakpoint:after {
-  content: 'No media query';
-  @each $breakpoint in $s-breakpoints {
-    @media (min-width: nth(($breakpoint), 2)) {
-      content: '#{nth($breakpoint,1)}';
-    }
-  }
-  color: $s-pms-2395;
-  display: inline-block;
-}
+
 .text-size:after {
   content: 'size';
   
 }
 .heading {
   position: relative;
-  
+  margin: 0;
+  width: 450px;
+  &.hero {
+    text-transform: uppercase;
+  }
+  &.quote {
+    font-family: 'berlingske_serif_stencidemiBd', Arial, sans-serif;
+  }
   &--xxl {
     @include t-responsive-type-size(sideswipe);
     font-family: 'berlingske_serif_stencidemiBd', Arial, sans-serif;
@@ -277,19 +274,10 @@ body {
   }
 }
 
-.annotation {
-  color: $s-pms-2395;
-  font-family: 'Courier new';
-  font-size: 10px;
-  display: inline-block;
-  line-height: 1em;
-  margin: 0;
-  position: absolute;
-  top: -10px;
-}
 
 .para {
   position: relative;
+  width: 560px;
   font-family: 'urw_geometricregular', Arial, sans-serif;
   &--l {
     @include t-responsive-type-size(blaster);  
@@ -342,6 +330,7 @@ body {
     display: flex;
     font-weight: bold;
     align-items: center;
+    @include t-responsive-type-size(ratchet);
 
     &::after {
       content: '';
