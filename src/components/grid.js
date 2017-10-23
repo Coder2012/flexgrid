@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Carousel from './carousel';
 
 const Grid = Vue.component('grid', {
 	template: `<section>
@@ -16,111 +17,73 @@ const Grid = Vue.component('grid', {
     			</div>
     		</div>
     		<div class="l-row row-vsb">
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    			<div class="l-col--xs-12 l-col--lg-1">
-    				<div class="block block--inner"></div>
-    			</div>
-    		</div>
-    		<div class="l-row row-vsb">
-    			<div class="l-col--xs-12 l-col--lg-2">
+    			<div class="l-col--xs-12 l-col--md-2">
     				<div class="block">
     					<div class="l-row">
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
     					</div>
     				</div>
     			</div>
-    			<div class="l-col--xs-12 l-col--lg-2">
+    			<div class="l-col--xs-12 l-col--md-2">
     				<div class="block">
     					<div class="l-row">
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
     					</div>
     				</div>
     			</div>
-    			<div class="l-col--xs-12 l-col--lg-2">
+    			<div class="l-col--xs-12 l-col--md-2">
     				<div class="block">
     					<div class="l-row">
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
     					</div>
     				</div>
     			</div>
-    			<div class="l-col--xs-12 l-col--lg-2">
+    			<div class="l-col--xs-12 l-col--md-2">
     				<div class="block">
     					<div class="l-row">
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
     					</div>
     				</div>
     			</div>
-    			<div class="l-col--xs-12 l-col--lg-2">
+    			<div class="l-col--xs-12 l-col--md-2">
     				<div class="block">
     					<div class="l-row">
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
     					</div>
     				</div>
     			</div>
-    			<div class="l-col--xs-12 l-col--lg-2">
+    			<div class="l-col--xs-12 l-col--md-2">
     				<div class="block">
     					<div class="l-row">
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
-    						<div class="l-col--xs-12 l-col--lg-6">
+    						<div class="l-col--xs-12 l-col--md-6">
     							<div class="block block--inner"></div>
     						</div>
     					</div>
@@ -387,9 +350,11 @@ const Grid = Vue.component('grid', {
     				<div class="block block--inner"></div>
     			</div>
     		</div>
-    	</div>
-    	</section>
+            <carousel></carousel>
+        </div>
+        </section>
     </section>`
+
 });
 
 export default Grid;

@@ -1,0 +1,39 @@
+.product {
+	font-family: "BLOKK";
+	&__img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	&__inner {
+		background-color: grey;
+	}
+}
+
+.slick-slide {
+	padding: 1.125rem;
+}
+
+.slick-dots	{
+	display: flex;
+	justify-content: center;
+
+	li {
+		padding: 0 5px;
+
+		&.slick-active [id^=slick-slide-control] {
+			background-color: #888;
+		}
+	}
+
+	[id^=slick-slide-control] {
+		background: none;
+		border: 3px solid #888;
+		border-radius: 50%;
+		cursor: pointer;
+		font-size: 0;
+		padding: 0;
+		width: 15px;
+		height: 15px;
+	}
+}

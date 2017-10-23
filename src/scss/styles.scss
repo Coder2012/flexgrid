@@ -1,6 +1,8 @@
-@import "buttons";
 @import "flex-grid";
+@import "slick";
 @import "typography-demo";
+@import "buttons";
+@import "product";
 
 body {
 	font-family: 'Courier New';
@@ -21,6 +23,7 @@ ol {
 
 	&--inner {
 		background-color: #FEDEE9;
+		border: 1px solid pink;
 		height: 100px;
 
 		&::before {
@@ -45,6 +48,7 @@ ol {
 			transform: translate(-50%, -50%);
 		}
 	}
+
 }
 
 .row-vsb {
