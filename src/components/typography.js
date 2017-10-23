@@ -13,6 +13,7 @@ const Typography = Vue.component('typography', {
 	  			</ul>
 	  		</nav>
 			  <img class="logo" src="assets/logo.png" alt="Freya logo">
+			  <p> test</p>
 			  <p class="url">freyalingerie.com</p>
 			  <p class="para breakpoint">Breakpoint: </p>
 
