@@ -434,9 +434,3 @@ $s-type-sizing: (
     }
   }
 }
-
-body {
-  @include t-respond-to(tablet) {
-    background-color: red;
-  }
-}
