@@ -241,6 +241,26 @@ $s-type-sizing: (
   }
 }
 
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin t-respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($s-breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($s-breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+ 
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
 .main {
   max-width: t-rem(1280px);
   margin: auto;
@@ -412,5 +432,11 @@ $s-type-sizing: (
          margin: 0 12px;
       }
     }
+  }
+}
+
+body {
+  @include t-respond-to(tablet) {
+    background-color: red;
   }
 }
