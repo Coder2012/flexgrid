@@ -20,7 +20,7 @@ const Carousel = Vue.component('carousel', {
 					<section class="carousel l-row">
             <div class="product product__first">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/831x468" alt="placeholder image">
+	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -28,7 +28,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/831x468" alt="placeholder image">
+	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -36,7 +36,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/831x468" alt="placeholder image">
+	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -44,7 +44,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/831x468" alt="placeholder image">
+	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -52,7 +52,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/831x468" alt="placeholder image">
+	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -60,7 +60,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product product__last">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/831x468" alt="placeholder image">
+	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>

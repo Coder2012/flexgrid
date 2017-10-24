@@ -136,28 +136,6 @@ p {
 		background-color: #FEDEE9;
 		border: 1px solid pink;
 		height: 100px;
-
-		&::before {
-			content: '';
-			background-color: white;
-			border-radius: 50%;
-			display: inline-block;
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			width: 45px;
-			height: 45px;
-			transform: translate(-50%, -50%);
-		}
-
-		&::after {
-			counter-increment: row;
-			content: counter(row);
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-		}
 	}
 
 }
