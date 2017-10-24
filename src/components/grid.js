@@ -350,7 +350,8 @@ const Grid = Vue.component('grid', {
     				<div class="block block--inner"></div>
     			</div>
     		</div>
-            <carousel></carousel>
+            <carousel src="http://via.placeholder.com/800x1200" id="c1" mobile="1" tablet="4" desktop="6"></carousel>
+            <carousel src="http://via.placeholder.com/800x1200" id="c2" mobile="1" tablet="4" desktop="4"></carousel>
         </div>
         </section>
     </section>`

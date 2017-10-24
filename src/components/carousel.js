@@ -17,10 +17,10 @@ const Carousel = Vue.component('carousel', {
 		    			</div>
 		    		</div>
 					</header>
-					<section class="carousel l-row">
+					<section :id="id" class="l-row">
             <div class="product product__first">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
+	                <img class="product__img" :src="src" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -28,7 +28,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
+	                <img class="product__img" :src="src" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -36,7 +36,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
+	                <img class="product__img" :src="src" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -44,7 +44,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
+	                <img class="product__img" :src="src" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -52,7 +52,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
+	                <img class="product__img" :src="src" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -60,7 +60,7 @@ const Carousel = Vue.component('carousel', {
             </div>
             <div class="product product__last">
 	            <div class="product__inner">
-	                <img class="product__img" src="http://via.placeholder.com/1600x900" alt="placeholder image">
+	                <img class="product__img" :src="src" alt="placeholder image">
 	                <h3 class="product__title">title</h3>
 	                <p class="product__subtitle">subtitle</p>
 	                <p class="product__text">a paragraph of text</p>
@@ -68,21 +68,30 @@ const Carousel = Vue.component('carousel', {
             </div>
         </section>
       </section>`,
+  data () {
+  	return {
+  		img: 'http://via.placeholder.com/800x600'
+  	}
+  },
+  props: ['id', 'src', 'mobile', 'tablet', 'desktop'],
 	mounted () {
-		console.log('carousel mounted');
-		$('.carousel').slick({
+		let vm = this;
+
+		console.log(vm.id);
+
+		$(`#${vm.id}`).slick({
 			arrows: false,
 			autoplay: false,
 			dots: true,
-			slidesToShow: 2,
-			slidesToScroll: 2,
+			slidesToShow: parseInt(vm.desktop),
+			slidesToScroll: parseInt(vm.desktop),
 			responsive: [{
 				breakpoint: 768,
 				settings: {
 					dots: true,
 					infinite: false,
-					slidesToShow: 1,
-					slidesToScroll: 1
+					slidesToShow: parseInt(vm.mobile),
+					slidesToScroll: parseInt(vm.mobile)
 				}
 			},
 			{
@@ -90,8 +99,8 @@ const Carousel = Vue.component('carousel', {
 				settings: {
 					dots: true,
 					infinite: false,
-					slidesToShow: 3,
-					slidesToScroll: 3
+					slidesToShow: parseInt(vm.tablet),
+					slidesToScroll: parseInt(vm.tablet)
 				}
 			}]
 		});
